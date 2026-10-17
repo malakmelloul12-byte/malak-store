@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>استمارة الطلب عبر الواتساب</title>
+    <style>
+        :root {
+            --primary-color: #38bdf8; /* أزرق فاتح جميل */
+            --primary-hover: #0284c7;
+            --bg-color: #f0f9ff;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --border-color: #bae6fd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .order-card {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 500px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .card-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .card-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .order-form {
+            padding: 25px 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+            background-color: #f8fafc;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            background-color: #fff;
+        }
+
+        .row-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .row-group .form-group {
+            flex: 1;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="order-card">
+        <div class="card-header">
+            <h2>نموذج طلب المنتج</h2>
+            <p>عمر المعلومات وسجل الطلب ديالك عبر الواتساب</p>
+        </div>
+
+        <form class="order-form" id="whatsappForm">
+            <!-- معلومات الزبون -->
+            <div class="form-group">
+                <label for="fullName">الاسم الكامل *</label>
+                <input type="text" id="fullName" class="form-control" placeholder="مثال: محمد العلوي" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">رقم الهاتف *</label>
+                <input type="tel" id="phone" class="form-control" placeholder="0612345678" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">العنوان *</label>
+                <input type="text" id="address" class="form-control" placeholder="الحي، الشارع، رقم المنزل" required>
+            </div>
+
+            <div class="form-group">
+                <label for="city">المدينة *</label>
+                <input type="text" id="city" class="form-control" placeholder="مثال: الدار البيضاء" required>
+            </div>
+
+            <!-- خيارات المنتج -->
+            <div class="form-group">
+                <label for="product">اختر المنتج *</label>
+                <select id="product" class="form-control" required>
+                    <option value="" disabled selected>اختر المنتج المطلوب</option>
+                    <option value="قميص صيفي">قميص صيفي</option>
+                    <option value="حذاء رياضي">حذاء رياضي</option>
+                    <option value="سروال جينز">سروال جينز</option>
+                </select>
+            </div>
+
+            <div class="row-group">
+                <div class="form-group">
+                    <label for="size">المقاس (Size) *</label>
+                    <select id="size" class="form-control" required>
+                        <option value="" disabled selected>المقاس</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="color">اللون (Color) *</label>
+                    <select id="color" class="form-control" required>
+                        <option value="" disabled selected>اللون</option>
+                        <option value="أسود">أسود</option>
+                        <option value="أبيض">أبيض</option>
+                        <option value="أزرق">أزرق</option>
+                        <option value="رمادي">رمادي</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- خانة الملاحظات -->
+            <div class="form-group">
+                <label for="notes">ملاحظات إضافية (اختياري)</label>
+                <textarea id="notes" class="form-control" placeholder="أكتب هنا أي تعليمات إضافية والتوصيل..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                تأكيد الطلب عبر الواتساب 🛒
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // ⚠️ بدّل هاد الرقم برقم الواتساب ديالك (مع رمز الدولة بدون +)
+            // مثال للمغرب: 212600000000
+            const myPhoneNumber = "212600000000"; 
+
+            // جلب البيانات من الخانات
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const product = document.getElementById('product').value;
+            const size = document.getElementById('size').value;
+            const color = document.getElementById('color').value;
+            const notes = document.getElementById('notes').value || "لا توجد ملاحظات";
+
+            // ترتيب الرسالة التي ستصلك
+            const message = `*طلب جديد عبر الموقع* 🛍️%0A%0A` +
+                `👤 *معلومات الزبون:*%0A` +
+                `• *الاسم:* ${name}%0A` +
+                `• *الهاتف:* ${phone}%0A` +
+                `• *العنوان:* ${address}%0A` +
+                `• *المدينة:* ${city}%0A%0A` +
+                `📦 *تفاصيل المنتج:*%0A` +
+                `• *المنتج:* ${product}%0A` +
+                `• *المقاس:* ${size}%0A` +
+                `• *اللون:* ${color}%0A%0A` +
+                `📝 *ملاحظات:* ${notes}`;
+
+            // فتح رابط الواتساب
+            const whatsappUrl = `https://wa.me/${myPhoneNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+
+</body>
+</html>
